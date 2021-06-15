@@ -1,7 +1,0 @@
-bot_token = "1837143290:AAF-UCwY5ROLoMxKv0mLYrl85rltz9ZqT20"
-bot_user_name = "Weatherstationdashboardbot"
-URL = "https://weatherstation-dashboard.herokuapp.com"
-firebase_token = "K4hlhmmLMDg4ssgqtr0TVgyX7jgN16zMfY8eZaNV"
-firebase_authDomain = "weather-station-91122.firebaseapp.com"
-firebase_databaseURL = "https://weather-station-91122-default-rtdb.firebaseio.com"
-firebase_storageBucket = "weather-station-91122.appspot.com"
