@@ -2,7 +2,7 @@ from flask import Flask, request  # python Flask
 import pyrebase  # python library for firebase
 import telegram  # Python telegram bot library
 # Custom library for getting seceret credentials
-from telebot.credentials import bot_token, bot_user_name, URL, firebase_token, firebase_authDomain, firebase_databaseURL, firebase_storageBucket
+from credentials,py import bot_token, bot_user_name, URL, firebase_token, firebase_authDomain, firebase_databaseURL, firebase_storageBucket
 
 # For BOT creation
 global bot
