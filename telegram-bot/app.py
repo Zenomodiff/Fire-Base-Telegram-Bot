@@ -1,6 +1,6 @@
 from flask import Flask, request  # python Flask
 import pyrebase  # python library for firebase
-import telegram  # Python telegram bot library
+import telebot  # Python telegram bot library
 # Custom library for getting seceret credentials
 from telebot.credentials import bot_token, bot_user_name, URL, firebase_token, firebase_authDomain, firebase_databaseURL, firebase_storageBucket
 
@@ -8,7 +8,7 @@ from telebot.credentials import bot_token, bot_user_name, URL, firebase_token, f
 global bot
 global TOKEN
 TOKEN = bot_token
-bot = telegram.Bot(token=TOKEN)
+bot = telebot.Bot(token=TOKEN)
 
 app = Flask(__name__)
 
