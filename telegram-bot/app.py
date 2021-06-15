@@ -1,3 +1,13 @@
+"""
+Project Name : Home Weather Station
+Purpose : For telegram bot
+Created on : 04 Oct 2020
+Created by : Sashwat K <sashwat0001@gmail.com>
+Revision : 2
+Last Updated by : Sashwat K <sashwat0001@gmail.com>
+Last updated on : 04 Oct 2020
+"""
+
 from flask import Flask, request  # python Flask
 import pyrebase  # python library for firebase
 import telegram  # Python telegram bot library
@@ -29,25 +39,23 @@ databaseObject = firebaseObject.database()  # firebase database initialisation
 def getValuesFromFirebaseList():
     listData = []
     listData.append(databaseObject.child(
-        "sensor-values").child("Smoke").get().val())
+        "sensor-values").child("cng").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Cng").get().val())
+        "sensor-values").child("air_quality_index").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Lpg").get().val())
+        "sensor-values").child("lpg").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Air_Quality").get().val())
+        "sensor-values").child("smoke").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Rain_Value").get().val())
+        "sensor-values").child("rain_sensor").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Temperature").get().val())
+        "sensor-values").child("dht22_temperature").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Humidity").get().val())
+        "sensor-values").child("dht22_humidity").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Ldr").get().val())
+        "sensor-values").child("dht22_heat_index").get().val())
     listData.append(databaseObject.child(
-        "sensor-values").child("Pressure").get().val())    
-    listData.append(databaseObject.child(
-        "sensor-values").child("Altitude").get().val())  
+        "sensor-values").child("last_updated").get().val())    
     return listData
 
 
@@ -55,7 +63,7 @@ def getValuesFromFirebaseList():
 def getValuesFromFirebaseInd(valueName):
     result = []
     result.append(databaseObject.child("sensor-values").child("last_updated").get().val())
-    if valueName == "AQUI":
+    if valueName == "AQI":
         result.append(databaseObject.child("sensor-values").child("air_quality_index").get().val())
         return result
     elif valueName == "CNG":
@@ -101,16 +109,23 @@ def respond():
     if text == "/start":
         bot_welcome = """
        HOME WEATHER STATION
-
        Welcome to Sashwat's Home Weather Station. Use the following commands for stats:-
-       1. /status - Gives all values
-       2. /AQUI (MQ-135) - Air Quality Index in PPM
+       1. /stats - Gives all values
+       2. /AQI (MQ-135) - Air Quality Index in PPM
        3. /CNG (MQ-4) - Compressed Natural Gas in PPM
-       4. /LPG (DHT22) - Heat Index in Celsius
+       4. /HI (DHT22) - Heat Index in Celsius
        5. /HUM (DHT22) - Humidity in Percentage
        6. /TEM (DHT22) - Temperature in Celsius
        7. /LPG (MQ-5) - LPG in PPM
        8. /RAIN (Rain sensor) - Analog Value
+       9. /SMKE (MQ-2) - Smoke in in PPM
+       NOTES:-
+       1. Project under development.
+       2. Gas sensors need Calibration.
+       3. More features will be added soon.
+       Features:-
+       1. Get Latest sensor values from sensors.
+       GITHUB PROJECT LINK - https://github.com/sashuu6/home-weather-station
        """
 
         # send the welcoming message
@@ -129,7 +144,6 @@ def respond():
         6. TEMPERATURE: {} °C
         7. HUMIDITY: {} %
         8. HI: {} °C
-
         Last Updated : {}
         """.format(firebaseResult[0], firebaseResult[1], firebaseResult[2], firebaseResult[3], firebaseResult[4], firebaseResult[5], firebaseResult[6], firebaseResult[7], firebaseResult[8])
 
@@ -138,8 +152,8 @@ def respond():
                         reply_to_message_id=msg_id)
 
     elif text == "/AQI":
-        firebaseValues = getValuesFromFirebaseInd("AQUI")
-        bot.sendMessage(chat_id=chat_id, text=individualValue.format("AQUI", firebaseValues[1], "PPM",firebaseValues[0]),
+        firebaseValues = getValuesFromFirebaseInd("AQI")
+        bot.sendMessage(chat_id=chat_id, text=individualValue.format("AQI", firebaseValues[1], "PPM",firebaseValues[0]),
                         reply_to_message_id=msg_id)
 
     elif text == "/CNG":
