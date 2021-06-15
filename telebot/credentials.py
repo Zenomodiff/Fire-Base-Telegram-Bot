@@ -1,5 +1,5 @@
 bot_token = "1871490605:AAGh44PpJb6c3_ya4OxHa5IRQMXLqHA6GDo"
-bot_user_name = "Weather_Station_Dashboard_Bot"
+bot_user_name = "@Weather_Station_Dashboard_Bot"
 URL = "https://weatherstation-dashboard.herokuapp.com/"
 firebase_token = "K4hlhmmLMDg4ssgqtr0TVgyX7jgN16zMfY8eZaNV"
 firebase_authDomain = "weather-station-91122.firebaseapp.com"
