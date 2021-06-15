@@ -55,7 +55,7 @@ def getValuesFromFirebaseList():
 def getValuesFromFirebaseInd(valueName):
     result = []
     result.append(databaseObject.child("sensor-values").child("last_updated").get().val())
-    if valueName == "AQI":
+    if valueName == "AQUI":
         result.append(databaseObject.child("sensor-values").child("air_quality_index").get().val())
         return result
     elif valueName == "CNG":
