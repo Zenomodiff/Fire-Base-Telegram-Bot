@@ -1,7 +1,0 @@
-bot_token = ""
-bot_user_name = ""
-URL = ""
-firebase_token = ""
-firebase_authDomain = ""
-firebase_databaseURL = ""
-firebase_storageBucket = ""
