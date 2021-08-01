@@ -1,8 +1,12 @@
 from telegram import *
 from telegram.ext import *
+from flask import Flask
+import json, time
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+
+app = Flask(__name__)
 
 
 cred = credentials.Certificate("firebase-sdk.json")
@@ -48,6 +52,16 @@ def test_function(update:Update,context:CallbackContext):
        10. /SMKE - Smoke in in PPM,
        11. /TEMP - Temperature in in °C, '''
    )
+    
+@app.route('/', methods=['GET'])
+def home_page():
+    data_set = {'Air_Quality': Air_Quality.get(), 'Altitude': Altitude.get(), 'Cng': Cng.get(), 'Humidity': Humidity.get(), 'Ldr': Ldr.get(), 'Lpg': Lpg.get(), 'Pressure': Pressure.get(), 'Rain_Value': Rain_Value.get(), 'Smoke': Smoke.get(), 'Temperature': Temperature.get(), 'timestamp': time.time()}
+    json_dump = json.dumps(data_set)
+
+    return json_dump
+if __name__ == '__main__':
+    app.run(port=5000)
+
 start_value=CommandHandler('start',test_function)
 
 dispatcher.add_handler(start_value)
