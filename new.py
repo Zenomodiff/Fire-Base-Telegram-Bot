@@ -1,7 +1,7 @@
 from telegram import *
 from telegram.ext import *
 from flask import Flask
-import json, time
+import time
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -55,10 +55,8 @@ def test_function(update:Update,context:CallbackContext):
     
 @app.route('/', methods=['GET'])
 def home_page():
-    data_set = {'Air_Quality': Air_Quality.get(), 'Altitude': Altitude.get(), 'Cng': Cng.get(), 'Humidity': Humidity.get(), 'Ldr': Ldr.get(), 'Lpg': Lpg.get(), 'Pressure': Pressure.get(), 'Rain_Value': Rain_Value.get(), 'Smoke': Smoke.get(), 'Temperature': Temperature.get(), 'timestamp': time.time()}
-    json_dump = json.dumps(data_set)
+return 'The Bot Can Be Found In Telegram  @ The ID :-- appcallingbot       Download TELEGRAM From Here :-- https://telegram.org/'
 
-    return json_dump
 if __name__ == '__main__':
     app.run(port=5000)
 
