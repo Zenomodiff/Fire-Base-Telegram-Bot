@@ -41,16 +41,16 @@ def test_function(update:Update,context:CallbackContext):
        Welcome to ZenoModiff Home Weather Station. 
         Use the following commands for stats:-
        1. /STATUS - Gives all values
-       2. /AQI - Air Quality in PPM
-       3. /ALTI - Altitude in PPM
-       4. /CNG - Compressed Gas in PPM
-       5. /HUMI - Humidity in Percentage
+       2. /AQ - Air Quality Value
+       3. /ALTI - Altitude Value
+       4. /CNG - Compressed Natural Gas Value
+       5. /HUMI - Humidity Value
        6. /LDR - Light Intensity
-       7. /LPG - LPG in PPM
-       8. /PRESS - Pressure Value IN PPM
-       9. /RVLE - Rain Value ,
-       10. /SMKE - Smoke in in PPM,
-       11. /TEMP - Temperature in in °C, '''
+       7. /LPG - Liquefied petroleum gas Value
+       8. /PRESS - Pressure Value
+       9. /RV - Rain Value 
+       10. /SMKE - Smoke Value
+       11. /TEMP - Temperature Value '''
    )
     
 @app.route('/', methods=['GET'])
@@ -70,7 +70,7 @@ def test_function1(update:Update,context:CallbackContext):
 
        text= Air_Quality.get() 
    )
-start_value1=CommandHandler('AQI',test_function1)
+start_value1=CommandHandler('AQ',test_function1)
 
 dispatcher.add_handler(start_value1)
 
@@ -144,7 +144,7 @@ def test_function8(update:Update,context:CallbackContext):
 
        text= Rain_Value.get()
    )
-start_value8=CommandHandler('RVLE',test_function8)
+start_value8=CommandHandler('RV',test_function8)
 
 dispatcher.add_handler(start_value8)
 
