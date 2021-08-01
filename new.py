@@ -37,9 +37,10 @@ def test_function(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text='''  WEATHER STATION DATA 
-       Welcome to ZenoModiff Home Weather Station. 
-        Use the following commands for stats:-
+       text= '''  
+       Welcome to ZenoModiff Weather Station. 
+       Use the following commands for stats:-
+       
        1. /STATUS - Gives all values
        2. /AQ - Air Quality Value
        3. /ALTI - Altitude Value
@@ -54,8 +55,8 @@ def test_function(update:Update,context:CallbackContext):
    )
     
 @app.route('/')
-def hello_world():
-    return 'Hello World'
+def Message():
+    return 'Bot Is Available @ apicallingbot in Telegram'
 
 if __name__ == '__main__':
     app.run(port=5000)
