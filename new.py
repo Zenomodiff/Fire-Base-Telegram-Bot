@@ -54,8 +54,8 @@ def test_function(update:Update,context:CallbackContext):
    )
     
 @app.route('/')
-def home_page():
-return 'The Bot Can Be Found In Telegram  @ The ID :-- appcallingbot       Download TELEGRAM From Here :-- https://telegram.org/'
+def hello_world():
+    return 'Hello World'
 
 if __name__ == '__main__':
     app.run(port=5000)
