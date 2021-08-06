@@ -26,10 +26,10 @@ Rain_Value = db.reference('Rain_Value')
 Smoke = db.reference('Smoke')
 Temperature = db.reference('Temperature')
 
-bot = Bot("1940119944:AAHP9d3XQyMML5ITRsPTwLj5PDno6VWKEAQ")
+bot = Bot("1940119944:AAGbm9NejhuVMGsQwSN7fhxPmKvH3hPYZRU")
 #print(bot.get_me())
 
-updater=Updater("1940119944:AAHP9d3XQyMML5ITRsPTwLj5PDno6VWKEAQ",use_context=True)
+updater=Updater("1940119944:AAGbm9NejhuVMGsQwSN7fhxPmKvH3hPYZRU",use_context=True)
 
 dispatcher=updater.dispatcher
 
