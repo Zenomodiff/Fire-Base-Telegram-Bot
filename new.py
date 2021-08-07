@@ -1,7 +1,7 @@
 from telegram import *
 from telegram.ext import *
 from flask import Flask
-import time , json , requests
+import json , requests
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -44,7 +44,7 @@ def test_function(update:Update,context:CallbackContext):
        1. /STATUS - Gives all values
        2. /AQ - Air Quality Value
        3. /ALTI - Altitude Value
-       4. /CNG - Compressed Natural Gas Value
+       4. /CNG - Natural Gas Value
        5. /HUMI - Humidity Value
        6. /LDR - Light Intensity
        7. /LPG - Liquefied petroleum gas Value
@@ -61,7 +61,7 @@ def Message():
 if __name__ == '__main__':
     app.run(port=5000)
 
-start_value=CommandHandler('start',test_function)
+start_value=CommandHandler('START',test_function)
 
 dispatcher.add_handler(start_value)
 
