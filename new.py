@@ -53,7 +53,8 @@ def test_function(update:Update,context:CallbackContext):
        10. /SMKE - Smoke Value
        11. /TEMP - Temperature Value 
        
-       PING THE BOT IN THE URL https://telegram-weather-api-bot.herokuapp.com/
+       IF BOT IS NOT RESPONDING PLEASE
+       PING THIS URL https://telegram-weather-api-bot.herokuapp.com/
        '''
         
         
