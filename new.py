@@ -52,7 +52,8 @@ def test_function(update:Update,context:CallbackContext):
        9. /RV - Rain Value 
        10. /SMKE - Smoke Value
        11. /TEMP - Temperature Value 
-       12. PING THE BOT IN THE URL https://fire-base-telegram-bot.herokuapp.com/
+       
+       PING THE BOT IN THE URL https://telegram-weather-api-bot.herokuapp.com/
        '''
         
         
