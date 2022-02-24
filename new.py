@@ -36,9 +36,9 @@ h = "Rain_Value " + str(Rain_Value) + " MM"
 i = "Smoke " + str(Smoke) + " PPM"
 j = "Temperature " + str(Temperature) + " °C"
 
-bot = Bot("1940119944:AAGDTbCYW6PFCHjgnbKLRCoV3lqu2neWL0Y")
+bot = Bot("Telegram-Bot-Api")
 
-updater=Updater("1940119944:AAGDTbCYW6PFCHjgnbKLRCoV3lqu2neWL0Y",use_context=True)
+updater=Updater("Telegram-Bot-Api",use_context=True)
 
 dispatcher=updater.dispatcher
 
