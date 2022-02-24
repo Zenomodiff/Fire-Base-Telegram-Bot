@@ -67,7 +67,21 @@ def test_function(update:Update,context:CallbackContext):
     
 @app.route('/')
 def Message():
-    return 'Bot Is Available @ apicallingbot in Telegram'
+    return '''
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+      <h1 class="project-name">Welcome to Telegram BOT 🤖</h1>
+      <h2 class="project-tagline">Telegram Bot Which Return Data From Firebase</h2
+<h2 id="Serach">Search:</h2>
+<ul>
+<p>@apicallingbot in Telegram</p>
+</ul>
+    </main>
+  </body>
+</html>
+    '''
 
 if __name__ == '__main__':
     app.run(port=5000)
