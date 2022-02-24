@@ -8,28 +8,37 @@ from firebase_admin import db
 
 app = Flask(__name__)
 
-
 cred = credentials.Certificate("firebase-sdk.json")
 firebase_admin.initialize_app(cred,{
 
     'databaseURL': 'https://weather-station-91122-default-rtdb.firebaseio.com/'
 })
 
-Air_Quality = db.reference('Air_Quality')
-Altitude = db.reference('Altitude')
-Cng = db.reference('Cng')
-Humidity = db.reference('Humidity')
-Ldr = db.reference('Ldr')
-Lpg = db.reference('Lpg')
-Pressure = db.reference('Pressure')
-Rain_Value = db.reference('Rain_Value')
-Smoke = db.reference('Smoke')
-Temperature = db.reference('Temperature')
+Air_Quality = db.reference('Air_Quality').get()
+Altitude = db.reference('Altitude').get()
+Cng = db.reference('Cng').get()
+Humidity = db.reference('Humidity').get()
+Ldr = db.reference('Ldr').get()
+Lpg = db.reference('Lpg').get()
+Pressure = db.reference('Pressure').get()
+Rain_Value = db.reference('Rain_Value').get()
+Smoke = db.reference('Smoke').get()
+Temperature = db.reference('Temperature').get()
 
-bot = Bot("1940119944:AAGbm9NejhuVMGsQwSN7fhxPmKvH3hPYZRU")
-#print(bot.get_me())
+a = "Air_Quality " + str(Air_Quality) + " PPM"
+b = "Altitude " + str(Altitude) + " M"
+c = "Cng " + str(Cng) + " PPM"
+d = "Humidity " + str(Humidity) + " %"
+e = "Ldr " + str(Ldr) + " LX"
+f = "Lpg " + str(Lpg) + " PPM"
+g = "Pressure " + str(Pressure) + " PA"
+h = "Rain_Value " + str(Rain_Value) + " MM"
+i = "Smoke " + str(Smoke) + " PPM"
+j = "Temperature " + str(Temperature) + " °C"
 
-updater=Updater("1940119944:AAGbm9NejhuVMGsQwSN7fhxPmKvH3hPYZRU",use_context=True)
+bot = Bot("1940119944:AAGDTbCYW6PFCHjgnbKLRCoV3lqu2neWL0Y")
+
+updater=Updater("1940119944:AAGDTbCYW6PFCHjgnbKLRCoV3lqu2neWL0Y",use_context=True)
 
 dispatcher=updater.dispatcher
 
@@ -52,11 +61,7 @@ def test_function(update:Update,context:CallbackContext):
        9. /RV - Rain Value 
        10. /SMKE - Smoke Value
        11. /TEMP - Temperature Value 
-       
-       IF BOT IS NOT RESPONDING PLEASE
-       PING THIS URL https://telegram-weather-api-bot.herokuapp.com/
-       '''
-        
+       '''       
         
    )
     
@@ -75,7 +80,7 @@ def test_function1(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Air_Quality.get() 
+       text= a
    )
 start_value1=CommandHandler('AQ',test_function1)
 
@@ -86,7 +91,7 @@ def test_function2(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Altitude.get()
+       text= b
    )
 start_value2=CommandHandler('ALTI',test_function2)
 
@@ -96,7 +101,7 @@ def test_function3(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Cng.get()
+       text= c
    )
 start_value3=CommandHandler('CNG',test_function3)
 
@@ -107,7 +112,7 @@ def test_function4(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Humidity.get()
+       text= d
    )
 start_value4=CommandHandler('HUMI',test_function4)
 
@@ -117,7 +122,7 @@ def test_function5(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Ldr.get()
+       text= e
    )
 start_value5=CommandHandler('LDR',test_function5)
 
@@ -128,7 +133,7 @@ def test_function6(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Lpg.get()
+       text= f
    )
 start_value6=CommandHandler('LPG',test_function6)
 
@@ -138,7 +143,7 @@ def test_function7(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Pressure.get()
+       text= g
    )
 start_value7=CommandHandler('PRESS',test_function7)
 
@@ -149,7 +154,7 @@ def test_function8(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Rain_Value.get()
+       text= h
    )
 start_value8=CommandHandler('RV',test_function8)
 
@@ -160,7 +165,7 @@ def test_function9(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Smoke.get()
+       text= i
    )
 start_value9=CommandHandler('SMKE',test_function9)
 
@@ -171,24 +176,21 @@ def test_function10(update:Update,context:CallbackContext):
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text= Temperature.get()
+       text= j
    )
 start_value10=CommandHandler('TEMP',test_function10)
 
 dispatcher.add_handler(start_value10)
 
 def test_function11(update:Update,context:CallbackContext):
+    list_Data = a,b,c,d,e,f,g,h,i,j
     bot.send_message(
        chat_id=update.effective_chat.id,
 
-       text = [Air_Quality.get(), Altitude.get(), Cng.get(), Humidity.get(), Ldr.get(), Lpg.get(), Pressure.get(), Rain_Value.get(), Smoke.get(), Temperature.get() ]
-
+       text = list_Data
    )
 start_value11=CommandHandler('STATUS',test_function11)
 
 dispatcher.add_handler(start_value11)
 
-
 updater.start_polling()
-
- # {'Air_Quality': Air_Quality.get(), 'Altitude': Altitude.get(), 'Cng': Cng.get(), 'Humidity': Humidity.get(), 'Ldr': Ldr.get(), 'Lpg': Lpg.get(), 'Pressure': Pressure.get(), 'Rain_Value': Rain_Value.get(), 'Smoke': Smoke.get(), 'Temperature': Temperature.get()}
